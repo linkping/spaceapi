@@ -6,6 +6,8 @@ import http from 'http'
 import rc from './rc.js'
 import log from './log.js'
 
+// TODO hook up mqtt to set open state
+
 async function start () {
   const app = express()
   const server = await http.createServer(app)
@@ -34,6 +36,7 @@ async function start () {
       },
       state: {
         // TODO make dynamic
+        // TODO use local level to read state from
         open: false
       }
     })
