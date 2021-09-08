@@ -3,6 +3,7 @@
 import express from 'express'
 import cors from 'cors'
 import http from 'http'
+import level from 'level'
 import rc from './rc.js'
 import log from './log.js'
 
@@ -11,9 +12,18 @@ import log from './log.js'
 async function start () {
   const app = express()
   const server = await http.createServer(app)
+  const db = level('./db', { valueEncoding: 'json' })
 
   app.set('x-powered-by', false)
   app.use(cors())
+
+  const isOpen = async () => {
+    try {
+      return await db.get('open')
+    } catch (e) {
+      return false
+    }
+  }
 
   app.route('/').get(async (req, res) => {
     res.json({
@@ -35,9 +45,7 @@ async function start () {
         irc: 'irc://irc.libera.chat/#linkping'
       },
       state: {
-        // TODO make dynamic
-        // TODO use local level to read state from
-        open: false
+        open: await isOpen()
       }
     })
   })
