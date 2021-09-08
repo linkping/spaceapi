@@ -19,9 +19,8 @@ async function start () {
     })
   })
 
-  server.listen(rc.spaceapi.port, () => {
-    log.info(`server listening on port ${rc.spaceapi.port}`)
-  })
+  const { port } = rc.spaceapi
+  server.listen(port, () => log.info(`server listening on port ${port}`))
 }
 
 start()
