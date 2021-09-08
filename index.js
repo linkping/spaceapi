@@ -33,11 +33,6 @@ async function start () {
         irc: 'irc://irc.libera.chat/#linkping'
       },
       state: {
-        icon: {
-          // TODO replace icons
-          open: 'http://shackspace.de/sopen.gif',
-          closed: 'http://shackspace.de/sopen.gif'
-        },
         // TODO make dynamic
         open: false
       }
