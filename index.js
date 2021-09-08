@@ -1,6 +1,7 @@
 'use strict'
 
 import express from 'express'
+import cors from 'cors'
 import http from 'http'
 import rc from './rc.js'
 import log from './log.js'
@@ -10,9 +11,9 @@ async function start () {
   const server = await http.createServer(app)
 
   app.set('x-powered-by', false)
+  app.use(cors())
 
   app.route('/').get(async (req, res) => {
-    console.log('in /')
     res.json({
       beep: 'boop'
     })
