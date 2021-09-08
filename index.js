@@ -12,7 +12,7 @@ import log from './log.js'
 async function start () {
   const app = express()
   const server = await http.createServer(app)
-  const db = level('./db', { valueEncoding: 'json' })
+  const db = level(rc.spaceapi.db, { valueEncoding: 'json' })
 
   app.set('x-powered-by', false)
   app.use(cors())
