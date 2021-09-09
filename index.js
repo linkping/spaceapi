@@ -35,9 +35,8 @@ async function start () {
       url: 'https://docs.linkping.org',
       location: {
         address: 'Snickaregatan 16, Linköping, Sweden',
-        // TODO update using coordinates from https://wiki.hackerspaces.org/LINKPing
-        lat: 48.777,
-        lon: 9.236,
+        lat: 58.412116,
+        lon: 15.628053,
         timezone: 'SE'
       },
       contact: {
