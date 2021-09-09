@@ -4,6 +4,7 @@ import express from 'express'
 import cors from 'cors'
 import http from 'http'
 import level from 'level'
+import { URL } from 'url'
 import rc from './rc.js'
 import log from './log.js'
 
@@ -29,8 +30,7 @@ async function start () {
     res.json({
       api_compatibility: ['14'],
       space: 'LINKping',
-      // TODO update logo, using shackspace logo for now just to test json schema
-      logo: 'http://rescue.shackspace.de/images/logo_shack_brightbg_highres.png',
+      logo: 'https://spaceapi.linkping.org/logo',
       url: 'https://docs.linkping.org',
       location: {
         address: 'Snickaregatan 16, Linköping, Sweden',
@@ -46,6 +46,10 @@ async function start () {
         open: await isOpen()
       }
     })
+  })
+
+  app.route('/logo').get(async (req, res) => {
+    res.sendFile(new URL('./static/logo.svg', import.meta.url).pathname)
   })
 
   const { port } = rc.spaceapi
