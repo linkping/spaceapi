@@ -31,7 +31,6 @@ async function start () {
       space: 'LINKping',
       // TODO update logo, using shackspace logo for now just to test json schema
       logo: 'http://rescue.shackspace.de/images/logo_shack_brightbg_highres.png',
-      // TODO returning docs page for now, change to real homepage later
       url: 'https://docs.linkping.org',
       location: {
         address: 'Snickaregatan 16, Linköping, Sweden',
