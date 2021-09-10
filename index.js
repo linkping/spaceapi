@@ -30,7 +30,7 @@ async function start () {
     res.json({
       api_compatibility: ['14'],
       space: 'LINKping',
-      logo: 'https://spaceapi.linkping.org/logo',
+      logo: 'https://static.linkping.org/logo.png',
       url: 'https://docs.linkping.org',
       location: {
         address: 'Snickaregatan 16, Linköping, Sweden',
