@@ -4,7 +4,6 @@ import express from 'express'
 import cors from 'cors'
 import http from 'http'
 import level from 'level'
-import { URL } from 'url'
 import rc from './rc.js'
 import log from './log.js'
 
@@ -46,10 +45,6 @@ async function start () {
         open: await isOpen()
       }
     })
-  })
-
-  app.route('/logo').get(async (req, res) => {
-    res.sendFile(new URL('./static/logo.svg', import.meta.url).pathname)
   })
 
   const { port } = rc.spaceapi
