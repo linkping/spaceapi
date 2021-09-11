@@ -6,8 +6,7 @@ import http from 'http'
 import level from 'level'
 import config from './config.js'
 import log from './log.js'
-
-// TODO hook up mqtt to set open state
+import createMqttClient from './mqtt.js'
 
 async function start () {
   const app = express()
@@ -16,6 +15,16 @@ async function start () {
 
   app.set('x-powered-by', false)
   app.use(cors())
+
+  const mqtt = createMqttClient()
+
+  mqtt.on('message', async (topic, message) => {
+    if (topic === 'linkping/close') {
+      await db.put('open', false)
+    } else if (topic === 'linkping/open') {
+      await db.put('open', true)
+    }
+  })
 
   const isOpen = async () => {
     try {
