@@ -4,7 +4,7 @@ import express from 'express'
 import cors from 'cors'
 import http from 'http'
 import level from 'level'
-import rc from './rc.js'
+import config from './config.js'
 import log from './log.js'
 
 // TODO hook up mqtt to set open state
@@ -12,7 +12,7 @@ import log from './log.js'
 async function start () {
   const app = express()
   const server = await http.createServer(app)
-  const db = level(rc.spaceapi.db, { valueEncoding: 'json' })
+  const db = level(config.spaceapi.db, { valueEncoding: 'json' })
 
   app.set('x-powered-by', false)
   app.use(cors())
@@ -47,7 +47,7 @@ async function start () {
     })
   })
 
-  const { port } = rc.spaceapi
+  const { port } = config.spaceapi
   server.listen(port, () => log.info(`server listening on port ${port}`))
 }
 
