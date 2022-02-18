@@ -10,7 +10,7 @@ const TOPICS = [
 
 function createMqttClient () {
   const client = mqtt.connect(`tcp://${config.mqtt.host}:${config.mqtt.port}`, {
-    clientId: `linkbot-${uuidv4()}`,
+    clientId: `spaceapi-${uuidv4()}`,
     reconnectPeriod: 3000,
     username: config.mqtt.username,
     password: config.mqtt.password
